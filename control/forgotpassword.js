@@ -10,7 +10,7 @@ passwordform = document.getElementById('passwordform')
                     email: email.value
                 }
                 console.log("password form")
-                let response = await axios.post("http://localhost:8000/password/forgotpassword", myobj)
+                let response = await axios.post("http://13.233.19.134:8000/password/forgotpassword", myobj)
                 console.log(response)
 
                 if(response){

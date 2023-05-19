@@ -13,13 +13,13 @@ const form = document.getElementById("loginform")
             }
 
             console.log(login_obj)
-            let login_user = await axios.post("http://localhost:8000/user/login", login_obj)
+            let login_user = await axios.post("http://13.233.19.134:8000/user/login", login_obj)
             let listSize = 3
             console.log("login user data",login_user.data)
             localStorage.setItem('token',login_user.data.token)
             localStorage.setItem('listSizeToken',listSize)
             if (login_user.status == 200) {
-                window.location.href = "http://localhost:8000/expense/addexpense"
+                window.location.href = "http://13.233.19.134:8000/expense/addexpense"
             }
             else {
                 throw new Error("FAILED TO LOGIN")

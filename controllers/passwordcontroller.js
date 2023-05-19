@@ -50,7 +50,7 @@ exports.postPassword = async (req, res, next) => {
             sender,
             to: receivers,
             subject: "WE ARE EXPENSE TRACKER",
-            textContent: `<a href="http://localhost:8000/password/resetpassword/${id}">Reset password</a>`,
+            textContent: `<a href="http://13.233.19.134:8000/password/resetpassword/${id}">Reset password</a>`,
 
         })
         console.log(resp)

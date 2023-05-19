@@ -33,8 +33,8 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
         <div>
-            <a href="http://localhost:8000/user/signup" title="GO TO SIGN UP PAGE"> DON'T HAVE ACCOUNT? SIGN UP NOW</a> <br>
-            <a href="http://localhost:8000/password/forgotpassword" title="FORGOT PASSWORD"> FORGOT PASSWORD?</a>
+            <a href="http://13.233.19.134:8000/user/signup" title="GO TO SIGN UP PAGE"> DON'T HAVE ACCOUNT? SIGN UP NOW</a> <br>
+            <a href="http://13.233.19.134:8000/password/forgotpassword" title="FORGOT PASSWORD"> FORGOT PASSWORD?</a>
         </div>
 
     </div>
@@ -58,13 +58,13 @@
             }
 
             console.log(login_obj)
-            let login_user = await axios.post("http://localhost:8000/user/login", login_obj)
+            let login_user = await axios.post("http://13.233.19.134:8000/user/login", login_obj)
             let listSize = 3
             console.log("login user data",login_user.data)
             localStorage.setItem('token',login_user.data.token)
             localStorage.setItem('listSizeToken',listSize)
             if (login_user.status == 200) {
-                window.location.href = "http://localhost:8000/expense/addexpense"
+                window.location.href = "http://13.233.19.134:8000/expense/addexpense"
             }
             else {
                 throw new Error("FAILED TO LOGIN")

@@ -36,7 +36,7 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
         <div>
-            <a href="http://localhost:8000/user/login" title="GO TO LOGIN PAGE"> HAVE AN ACCOUNT? LOGIN NOW</a>
+            <a href="http://13.233.19.134:8000/user/login" title="GO TO LOGIN PAGE"> HAVE AN ACCOUNT? LOGIN NOW</a>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
@@ -60,10 +60,10 @@
                     password: userpassword.value
                 }
                 console.log(myobj)
-                let user_signup = await axios.post("http://localhost:8000/user/signup", myobj)
+                let user_signup = await axios.post("http://13.233.19.134:8000/user/signup", myobj)
                 console.log(user_signup.status)
                 if (user_signup.status == 201) {
-                    window.location.href = "http://localhost:8000/user/login"
+                    window.location.href = "http://13.233.19.134:8000/user/login"
                 }
                 else{
                     throw new Error("FAILED TO SIGNUP")

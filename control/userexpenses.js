@@ -29,7 +29,7 @@ expense_form = document.getElementById("expenseform")
                     console.log(myobj)
                     const token = localStorage.getItem('token')
                     console.log("save_on_db>>>>>>>", token)
-                    let posted = await axios.post("http://localhost:8000/expense/addexpense", myobj, { headers: { "Authorisation": token } })
+                    let posted = await axios.post("http://13.233.19.134:8000/expense/addexpense", myobj, { headers: { "Authorisation": token } })
                     console.log("posted data ",posted.data.expenses)
 
                     //show_on_screen(posted.data.expenses)
@@ -74,7 +74,7 @@ expense_form = document.getElementById("expenseform")
                     to_be_deleted.remove()
                     console.log(to_be_deleted)
                     const token = localStorage.getItem('token')
-                    let deleted = await axios.delete(`http://localhost:8000/deleteExpense/${id}`, { headers: { "Authorisation": token } })
+                    let deleted = await axios.delete(`http://13.233.19.134:8000/deleteExpense/${id}`, { headers: { "Authorisation": token } })
                     console.log(deleted.data.deleted)
                     deletePrice(-(deleted.data.deleted[0].amount))
                 }
@@ -107,7 +107,7 @@ expense_form = document.getElementById("expenseform")
                     const listSizeToken= localStorage.getItem('listSizeToken')
                     console.log('dom list size>>>>>>>>', listSizeToken)
                     console.log("parsed jwt", parseJwt(token))
-                    let loading = await axios.get(`http://localhost:8000/getAllExpenses?page=${page}`, { headers: { "Authorisation": token ,"listSize":listSizeToken} })
+                    let loading = await axios.get(`http://13.233.19.134:8000/getAllExpenses?page=${page}`, { headers: { "Authorisation": token ,"listSize":listSizeToken} })
                     console.log("DOM ALL DATA", loading.data)
 
                     const parsedtoken = parseJwt(token)
@@ -170,7 +170,7 @@ expense_form = document.getElementById("expenseform")
             async function getProducts(page) {
                 const token = localStorage.getItem('token')
                 const listSizeToken = localStorage.getItem('listSizeToken')
-                let loading = await axios.get(`http://localhost:8000/getAllExpenses?page=${page}`, { headers: { "Authorisation": token , "listSize":listSizeToken} })
+                let loading = await axios.get(`http://13.233.19.134:8000/getAllExpenses?page=${page}`, { headers: { "Authorisation": token , "listSize":listSizeToken} })
                 console.log("DOM ALL DATA", loading.data)
                 for (let i = 0; i < loading.data.expenses.length; i++) {
                     show_on_screen(loading.data.expenses)
@@ -207,7 +207,7 @@ expense_form = document.getElementById("expenseform")
                 e.preventDefault()
                 const token = localStorage.getItem('token')
                 console.log("premium html token >>>>>", token)
-                const response = await axios.get('http://localhost:8000/premiumMembership', { headers: { "Authorisation": token } })
+                const response = await axios.get('http://13.233.19.134:8000/premiumMembership', { headers: { "Authorisation": token } })
                 console.log(response)
 
                 var options =
@@ -215,7 +215,7 @@ expense_form = document.getElementById("expenseform")
                     "key": response.data.key_id,
                     "orderid": response.data.order.id,
                     "handler": async function (response) {
-                        const updateTransaction = await axios.post("http://localhost:8000/updateTransactionStatus", {
+                        const updateTransaction = await axios.post("http://13.233.19.134:8000/updateTransactionStatus", {
 
                             order_id: options.orderid,
                             payment_id: response.razorpay_payment_id
@@ -238,7 +238,7 @@ expense_form = document.getElementById("expenseform")
                 e.preventDefault()
 
                 rzp1.on("payment.failed", async function (response) {
-                    await axios.post("http://localhost:8000/updateFailedTransactionStatus", {
+                    await axios.post("http://13.233.19.134:8000/updateFailedTransactionStatus", {
 
                         order_id: options.orderid,
                         payment_id: response.razorpay_payment_id
@@ -259,7 +259,7 @@ expense_form = document.getElementById("expenseform")
             document.getElementById('leaderboard').onclick = async function () {
                 const token = localStorage.getItem('token')
                 console.log("leaderboard>>>>", token)
-                const response = await axios.get('http://localhost:8000/premium/showLeaderBoard', { headers: { "Authorisation": token } })
+                const response = await axios.get('http://13.233.19.134:8000/premium/showLeaderBoard', { headers: { "Authorisation": token } })
                 console.log(response.data.userLeaderBoardDetails)
                 for (let i = 0; i < response.data.userLeaderBoardDetails.length; i++) {
                     show_on_leaderboard(response.data.userLeaderBoardDetails[i])
@@ -285,7 +285,7 @@ expense_form = document.getElementById("expenseform")
                 try {
                     e.preventDefault()
                     const token = localStorage.getItem('token')
-                    const downloadresponse = await axios.get('http://localhost:8000/user/download', { headers: { "Authorisation": token } })
+                    const downloadresponse = await axios.get('http://13.233.19.134:8000/user/download', { headers: { "Authorisation": token } })
 
                     if (downloadresponse.status === 200) {
                         console.log("downloaded>>", downloadresponse.data.allURL)

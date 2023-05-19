@@ -14,7 +14,7 @@ async function save_in_database(e) {
             password: userpassword
         }
         console.log(myobj)
-        let user_signup = await axios.post("http://localhost:8000/user/signup",myobj)
+        let user_signup = await axios.post("http://13.233.19.134:8000/user/signup",myobj)
         console.log(user_signup)    
     
     }
